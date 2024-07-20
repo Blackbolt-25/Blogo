@@ -1,0 +1,15 @@
+.none{
+  text-decoration: none;
+}
+
+.title{
+  background: linear-gradient(90deg, rgba(245,166,51,1) 37%, rgba(229,254,0,1) 85%);
+}
+
+.selected{
+  border-bottom: 2px solid black
+};
+
+.dropdown-menu{
+  margin:0;
+}
