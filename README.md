@@ -20,11 +20,11 @@ For Setting up postgreSQL16:-
 
     2.)For creating users table use:-
 
-        `CREATE TABLE users(username VARCHAR(45) PRIMARY KEY,password VARCHAR(45));`
+`CREATE TABLE users(username VARCHAR(45) PRIMARY KEY,password VARCHAR(45));`
 
     3.)Similary for posts table use:-
 
-        `CREATE TABLE posts(username VARCHAR(45), header VARCHAR(30), blog TEXT, FOREIGN KEY(username) references users(username));`
+`CREATE TABLE posts(username VARCHAR(45), header VARCHAR(30), blog TEXT, FOREIGN KEY(username) references users(username));`
 
     4.)The above tasks can be done using pgAdmin 4.
 
