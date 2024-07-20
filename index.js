@@ -64,7 +64,7 @@ app.post("/login/signup",async (req,res)=>{
     const client=await pool.connect();
     const result=await client.query(`INSERT INTO public.users (username,password) VALUES ('${req.body.username}','${req.body.password}');`);
     client.release();
-    res.redirect("/");
+    res.redirect("/login");
     console.log(result);
   }
   catch(error){
@@ -72,16 +72,16 @@ app.post("/login/signup",async (req,res)=>{
   }
 });
 
-app.post("/post/submit",async(req,res)=>{
+app.post("/post",async(req,res)=>{
   const header=req.body.Header;   
   const blog=req.body.Blog;
-  console.log("Yo");
   try{
     const client=await pool.connect();
-    const result=await client.query(`INSERT INTO public.posts VALUES ('${username}','${header}','${blog}');`);
+    await client.query(`INSERT INTO public.posts VALUES ('${username}','${header}','${blog}');`);
+    const result=await client.query("SELECT * FROM posts");
+    posts=result.rows;
     client.release();
-    console.log(result);
-    res.redirect("/");
+    res.render("home.ejs",{data:posts,username:username});
   }
   catch(error){
     console.log(error);
@@ -91,7 +91,7 @@ app.post("/post/submit",async(req,res)=>{
 app.get("/logout",async(req,res)=>{
   username=null; 
   password=null;
-  res.redirect("/");
+    res.render("home.ejs",{data:posts});
 });
 
 app.get("/post",(req,res)=>{

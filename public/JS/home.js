@@ -4,5 +4,6 @@ $(".links").on("mouseenter",function(){
 
 $(".links").on("mouseleave",function(){
   $(this).removeClass("selected");
-})
+});
+
 
