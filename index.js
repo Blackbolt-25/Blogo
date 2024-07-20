@@ -16,6 +16,7 @@ const pool = new pg.Pool({
 //App Specific constants
 var username;
 var password;
+var posts;
 
 //Middleware
 app.use(express.static(__dirname + "/public"));
@@ -24,6 +25,7 @@ app.use(express.urlencoded({extended:true}));
 app.get("/",async(req,res)=>{
   const client=await pool.connect();
   const result=await client.query("SELECT * FROM posts");
+  posts=result.rows;
   if(username && password)
     res.render("home.ejs",{"username":username,data:result.rows});
   else
@@ -47,7 +49,7 @@ app.post("/login", async (req,res)=>{
     {
       username=req.body.username;
       password=req.body.password;
-      res.render("home.ejs",{once:1 ,username:username});
+      res.render("home.ejs",{once:1 ,username:username,data:posts});
     }
     else
       res.render("login.ejs",{once:1});
