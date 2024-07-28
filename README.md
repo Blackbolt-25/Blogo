@@ -29,4 +29,7 @@ For Setting up postgreSQL16:-
 
 4.)The above tasks can be done using pgAdmin 4.
 
+For more Information on PostgreSQL. Here is a [link](https://www.postgresql.org/docs/current/tutorial-start.html) to get you started.
+    
+
 
